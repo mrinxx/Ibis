@@ -1,0 +1,86 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+
+    <script src="{% static 'contact/javascript/mapconfiguration.js' %}"></script>
+    <script src="{% static 'contact/javascript/contactactions.js' %}"></script>
+    
+    <link rel="stylesheet" href="{% static 'contact/css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'portal/css/footer.css' %}">
+
+    <title>Escuela infantil Ibis - Contacto </title>
+</head>
+<body>
+    {% include 'portal/html/bases/header.html' %}
+    <main>
+        <h1>Contacto</h1>
+        <div id="contact-zone" >
+            <div id="contact-zone__map">
+
+            </div>
+            <div id="contact-zone__form">
+                <h2>Formulario de contacto</h2>
+                {% comment %} En caso de que se reciba una respuesta a la acción que se realiza al enviar el 
+                formulario, se va a mostrar aquí. 
+                -->Si encuentra que la respuesta es ok da un mensaje de validacion
+                --> Si encuentra que es not ok devuelve un mensaje de error {% endcomment %}
+                {%if is_ok%}
+                    {%ifequal is_ok 'ok'%}
+                    
+                        <div class="message"><p>¡Su mensaje se ha enviado correctamente. Pronto nos pondremos en contacto con usted!</p><button class="close"><i class="fas fa-times"></i></button></div>
+                    {%endifequal%}
+                    {%ifequal is_ok 'not ok'%}
+                        <div class="message"><p>Lo sentimos, pero ha ocurrido un error, intentelo de nuevo</p><button class="close"><i class="fas fa-times"></i></button></div>
+                    {%endifequal%}
+                {% endif %}
+                
+                <form onsubmit='contact/' method="POST">
+                {% csrf_token %}
+                    <!-- cada label+input en <p> para poder organizar mejor el espacio -->
+                    <p>
+                        {{form.name.label_tag}} <abbr title="Campo requerido">*</abbr><br>
+                        {{form.name}}<br>
+                        {{form.name.errors}}
+                    </p>
+                    <p>
+                        {{form.lastname.label_tag}}<abbr title="Campo requerido">*</abbr></label><br>
+                        {{form.lastname}}<br>
+                        {{form.lastname.errors}}
+                    </p>
+                    <p>
+                        {{form.phonenumber.label_tag}}<br>
+                        {{form.phonenumber}}<br>
+                        {% if form.phonenumber.errors%}
+                        <div class="alert"><p>{{form.phonenumber.errors}}</p></div>
+                        {% endif %}
+                    </p>
+                    <p>
+                        {{form.email.label_tag}}<abbr title="Campo requerido">*</abbr></label><br>
+                        {{form.email}}<br>
+                        {{form.email.errors}}
+                        
+                    </p>
+                    <p>
+                       {{form.message.label_tag}}<abbr title="Campo requerido">*</abbr></label><br>
+                        {{form.message}}<br>
+                        {{form.message.errors}}
+                    </p>
+                    <p>
+                        <button type="submit" class="send"><span>Enviar solicitud de contacto</span></button>
+                    </p>
+                </form>
+            </div>
+        </div>
+        
+    </main>
+    {% include 'portal/html/bases/footer.html' %}
+    {% comment %} Script de llamada a la api de google maps {% endcomment %}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVSXLFt1fWxGcDArFzBA3xrOlaaVj2SaQ&callback=initMap&libraries=&v=weekly" async></script>
+</body>
+</html>

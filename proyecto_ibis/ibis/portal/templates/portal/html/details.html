@@ -1,0 +1,45 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'portal/css/new-detail.css' %}">
+    <link rel="stylesheet" href="{% static 'portal/css/footer.css' %}">
+    {%for new in new%}
+    <title>Escuela infantil Ibis - {{new.title}} </title> 
+</head>
+<body>
+    {% include 'portal/html/bases/header.html' %}
+    <main>
+        <div id="image-zone">
+            <div id="image-wrapper" style="background-image: url('/media/{{new.media1}}')">
+            </div>
+                <h1 id="image-zone__title">{{new.title}}</h1>
+            
+        </div>
+        <section id="new-content">
+            <p>{{new.content}}</p>
+            
+        </section>
+        {% if images%}
+        <!-- Esta sección se hará visible en caso de que la noticia en cuestión tenga algún elemento multimedia -->
+        <h2>Galeria</h2>
+        <section id="new-gallery" >
+            <div id="gallery-container">
+            {%for image in images%}
+                <img src="/media/{{image}}">
+            {%endfor%}
+            </div>
+
+        </section>
+        {%endif%}
+        {%endfor%}
+    </main>
+    {% include 'portal/html/bases/footer.html' %}
+</body>
+</html>

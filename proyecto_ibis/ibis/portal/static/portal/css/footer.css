@@ -1,0 +1,203 @@
+
+:root{
+    --primary-color:#FAA81D;
+    --details-color:#FAB041;
+    --background-color:#F9F9F8;
+    --black:#000000;
+    --white:#FFFFFF;
+
+}
+
+/* Evito desbordamientos */
+*{
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color:var(--black);
+}
+body{
+    background-color: var(--background-color);
+    font-family: 'Montserrat',serif,Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+}
+/*FOOTER*/
+footer{
+    background-color: var(--primary-color);
+    min-height: 400px;
+}
+#footer-max{
+    display: block;
+}
+#footer-max_contact-and-logo{
+    display: inline-block;
+    margin-top: 4%;
+    width: 100%;  
+}
+
+#footer-max_elements-list{
+    list-style-type: none;
+    margin-left: 4%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;   
+}
+#footer-max_logo-footer{
+    width: 100%;
+}
+
+#footer-max_contact-call,#footer-max_find-us{
+    font-size: 2em;
+    margin-bottom: 1%;
+    font-style: italic;
+
+}
+#footer-max_number,#footer-max_address{
+    font-weight: 800;
+    font-size: 2.5em;
+    letter-spacing: 4px;
+    margin-top: 1%;
+}
+
+#footer-max_address{
+    font-size: 2.25em;
+    letter-spacing: 1px;
+}
+
+#footer-max_social-media{
+    font-size: 1.75em;
+    text-align: center;
+    margin-right: 5%;
+
+    display: flex;
+    justify-content: flex-end;
+}
+.circle{
+    background-color: var(--background-color);
+    border-radius: 50%;  
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+}
+.circle i{
+    font-size: 1.5rem;
+}
+#footer-max_other-links-list{
+    width: 100%;
+    list-style-type: none;
+    font-weight: 800;
+
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;  
+}
+
+/*Al realizar desktop first, el footer del tamaño de un dispositivo móvil lo deshabilito
+y lo habilito en la media query que corresponda. Tambien lo hago para el menú*/
+#footer-min,#min-menu-navegacion{
+    display:none;
+}
+
+@media screen and (max-width:1024px){
+    #footer-max_elements-list {
+        list-style-type: none;
+        margin-left: 4%;
+        display: grid;
+        justify-content: space-evenly;
+        padding: 0;
+}
+    .circle{
+        width: 80px;
+        height: 80px;
+    }
+    .circle i {
+        font-size: 2.5rem;
+        margin-top: 20px;
+    }
+
+    #footer-max_other-links {
+        margin-top: -10%;
+        padding-bottom: 15%;
+        margin-left: 30px;
+        top:-10%;
+    }
+
+    #footer-max_other-links-list {
+        display: initial;
+        padding-bottom: 5%;
+        margin-top: -15%;
+    }
+}
+
+@media screen and (max-width:480px){
+    /*Cambio de footer*/
+    #footer-max{
+        display:none;
+    }
+
+    footer{
+        min-height: 350px;
+    }
+    #footer-min{
+        display: block;
+    }
+
+    #footer-min_contact-and-logo{
+        display: flex;
+    }
+
+    #footer-min_logo{
+        width: 80%;
+        margin-left: -40%;
+    }
+
+    #footer-min_contact{
+        margin-left: -10%;
+        margin-top:30px;    
+    }
+
+    #footer-min_social-media{
+        margin-top:30px;  
+        margin-left: 4%;  
+    }
+
+    #footer-min_elements-list, #footer-min_other-links-list{
+        list-style: none;
+    }
+    #footer-min_contact-call,#footer-min_find-us{
+        font-size: 1.2em;
+        font-style: italic;
+        margin-bottom: 0;
+    
+    }
+    #footer-min_number,#footer-min_address{
+        font-weight: 800;
+        font-size: 1em;
+        margin-top: 0;
+    }
+    .circle{
+        width: 40px;
+        height: 40px;
+        text-align: center;
+    }
+    .social-link{
+        margin:0;
+    }
+    .social-link i {
+        font-size: 1.5rem;
+        margin-top:10px;
+    }
+    #footer-min_other-links-list{
+        padding-left: 50vw;
+    }
+    #footer-min_other-links{
+        list-style-type: none;
+        font-weight: 800;
+        font-size: 0.75em;
+        text-align: center;
+        margin-top: -40%;
+    }
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 301.3 254.6" style="enable-background:new 0 0 301.3 254.6;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#42210B;}
+	.st1{fill:#A67C52;}
+	.st2{fill:#8C6239;}
+	.st3{fill:#C69C6D;}
+	.st4{fill:#FFFFFF;}
+	.st5{fill:#FBB03B;}
+</style>
+<g id="Buho">
+	<path id="Oreja_derecha" class="st0" d="M183.2,49.4L170.5,5.7c-1.7-5.9-7.9-7.7-11.7-3.3l-24,25.7c-3.8,4-2.7,11.4,2.1,13.6
+		l36.7,18C179.5,62.2,185.3,56,183.2,49.4z"/>
+	<path id="Oreja_izquierda" class="st0" d="M50,60.8l34.7-18.3c4.8-2.6,5.8-10.3,1.4-14.3L57.6,3.2C53.1-0.5,47,2.1,45.9,8.3
+		l-6.2,43.3C38.7,58.6,44.5,63.7,50,60.8z"/>
+	
+		<ellipse id="Pata_izquierda" transform="matrix(0.5431 -0.8397 0.8397 0.5431 -151.1295 166.6016)" class="st1" cx="77.5" cy="222.2" rx="35.1" ry="24.9"/>
+	
+		<ellipse id="Pata_derecha" transform="matrix(0.8206 -0.5715 0.5715 0.8206 -102.1373 119.0722)" class="st1" cx="138.6" cy="222.2" rx="23.6" ry="35.8"/>
+	<ellipse id="Cuerpo" class="st2" cx="109.1" cy="125.7" rx="107.1" ry="97.9"/>
+	<ellipse id="Pecho" class="st3" cx="109.1" cy="160.9" rx="58.7" ry="61.3"/>
+	<path id="Ala_izquierda" class="st0" d="M49.7,207.1c-12.7,7.7-31.6-12.8-42.6-45.9c-10.6-33-9.3-66,3.4-73.7s31.6,12.8,42.6,45.9
+		C64.1,166,62.4,199.4,49.7,207.1z"/>
+	<path id="Parte_fondo_ojos" class="st3" d="M142,36.9c-14.4,0-26.8,8.1-32.6,19.4C103.3,45,90.9,37.3,76.8,37.3
+		c-20.3,0-36.7,15.8-36.7,35.6s16.5,35.6,36.7,35.6c14.4,0,26.8-8.1,32.6-19.4c6.2,11.4,18.5,19.1,32.6,19.1
+		c20.3,0,36.7-16.1,36.7-35.6S162.3,36.9,142,36.9z"/>
+	<ellipse id="Fondo_ojo_izquierdo" cx="74.4" cy="72.5" rx="24.7" ry="26.8"/>
+	<ellipse id="Fondo_ojo_derecho" cx="145.1" cy="72.5" rx="24.7" ry="26.8"/>
+	<ellipse id="Ojo_izquierdo" class="st4" cx="70" cy="59.3" rx="13" ry="6.6"/>
+	<path id="Pico" class="st5" d="M107.4,107.7l-6.2-12.1c-1.7-3.3,0.3-7.3,3.8-7.3h12c3.4,0,5.1,4,3.8,7.3l-6.2,12.1
+		C113.2,111,109.1,111,107.4,107.7z"/>
+	<ellipse id="Ojo_derecho" class="st4" cx="142.7" cy="59.3" rx="13" ry="6.6"/>
+	<path id="Ala_derecha" class="st0" d="M166.4,206.8c-14.1-4-16.5-33.7-5.1-66.4c11-33,31.6-56.5,45.3-52.5
+		c14.1,4,16.5,33.7,5.1,66.4C200.7,187,180.5,210.4,166.4,206.8z"/>
+	<g id="Plumas">
+		<path class="st2" d="M70.3,136.3c9.6,12.1,22,0,22,0"/>
+		<path class="st2" d="M98.4,136.7c9.6,12.1,22,0,22,0"/>
+		<path class="st2" d="M126.3,136.7c9.6,12.1,22,0,22,0"/>
+		<path class="st2" d="M82.7,160.2c9.6,12.1,22,0,22,0"/>
+		<path class="st2" d="M115.6,160.2c9.6,12.1,22,0,22,0"/>
+		<path class="st2" d="M100.2,178.9c9.6,12.1,22,0,22,0"/>
+	</g>
+</g>
+</svg>

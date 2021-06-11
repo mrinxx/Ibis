@@ -1,0 +1,156 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+    <script src="{% static 'users/javascript/passwordactions.js'%}" crossorigin="anonymous"></script>
+    <script src="{% static 'users/javascript/userpanelactions.js'%}" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'users/css/userpanel.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/panelsmodals.css' %}">
+    <link rel="stylesheet" href="{% static 'portal/css/footer.css' %}">
+
+    <title>Panel de usuario-Escuela infantil Ibis</title>
+</head>
+<body>
+    {% include 'portal/html/bases/header.html' %}    
+    <main>  
+            <h1>{{user.first_name}} {{user.last_name}}</h1>
+            <a href={% url 'logout' %} id="close-session"><span><i class="fas fa-door-open"></i></span>Cerrar sesión</a>
+            <div class="alert"> <p>En caso de necesitar ponerse en contacto con nosotros hagalo a través de <a href={% url 'contact' %}> este enlace <a></p></div>
+            <h2>Menores a cargo</h2>
+            <section id="child-container">
+                {% if not children%}
+                    <div class="alert"> <p>No se han encontrado datos en estos momentos</p></div>
+                {% endif %}
+                <div id="all-children">
+                {%for child in children%}
+                    <div class="childrencontainer">
+                        <img class="child-img" src="/media/{{child.image}}">
+                        {%for user in users%}
+                            {%ifequal user.id child.user_id%}
+                                <p><span class="name">{{user.first_name}} {{user.last_name}}</span></p>
+                            {%endifequal%} 
+                        {%endfor%}
+
+                        <p><span class="title">Fecha de nacimiento: </span><br><span>{{child.birth_date}}</span>
+                        {%for classroom in classrooms %}
+                            
+                            {%ifequal classroom.id child.classroom_id%}
+                                <p><span class="title">Curso:<br> </span>{{classroom.classroom}}</p>
+                            {%endifequal%}
+                            
+                        {%endfor%}
+                    </div>
+                {% endfor %}
+
+            </section>
+
+
+            <h2>Datos personales</h2>
+             <section id="personal-data">
+
+            {%if ok%} 
+                {%ifequal ok "not ok" %}
+                    <div class="alert"> <p>Se han producido errores durante la validación del formulario</p></div>
+                {%endifequal%}
+                {%ifequal ok "ok" %}
+                    <div class="alert"> <p>Datos modificados</p></div>
+                {%endifequal%}        
+            {%endif%}
+            <button id="edit-personal-data" onclick="enabledataedition()"><i class="fas fa-user-edit"></i></button>
+                    <button id="editor-closer" onclick="disabledataedition()" style="display:none"><i class="fas fa-times"></i></button>
+             <form id="personal-data-form" method="POST" action="{% url 'userpanel'%}">
+             {% csrf_token %}
+             
+                
+             <div id="form-inputs">
+             <p>
+                {{formpersonaldata.birthdate.label_tag}}
+                {{formpersonaldata.birthdate}}
+                
+             </p>
+             <p>
+                {{formpersonaldata.phonenumber.label_tag}}
+                {{formpersonaldata.phonenumber}}
+             </p>
+             
+             <p>
+                {{formpersonaldata.viatype.label_tag}}
+                {{formpersonaldata.viatype}}
+             </p>
+             <p>
+                {{formpersonaldata.vianame.label_tag}}
+                {{formpersonaldata.vianame}}
+             </p>
+             <p>
+                {{formpersonaldata.vianumber.label_tag}}
+                {{formpersonaldata.vianumber}}
+             </p>
+             <p>
+                {{formpersonaldata.floor.label_tag}}
+                {{formpersonaldata.floor}}
+             </p>
+             <p>
+                {{formpersonaldata.letter.label_tag}}
+                {{formpersonaldata.letter}}
+             </p>
+             <p>
+                {{formpersonaldata.cp.label_tag}}<br>
+                {{formpersonaldata.cp}}
+             </p>
+             <p>
+                {{formpersonaldata.city.label_tag}}
+                {{formpersonaldata.city}}
+             </p>
+             </div>
+             <button id="clickerformdata" type="submit" class="clicker" style="display:none"><span>Cambiar datos</span></button>
+            </form>
+             </section>
+
+            <h2>Datos de la cuenta</h2>
+            <section id="account-data">
+            {% comment %} 
+            En un futuro, esto se podría implantar como un formulario para wue los usuarios si que puediesen cambiar 
+            sus credenciales de acceso
+            <form method="post" action="">
+            {% csrf_token %} {% endcomment %}
+            <div id="account-data-form">
+               
+                <p>
+                    <label for="code">Código de usuario:</label>
+                    <input type="text" id="code" disabled value="{{guardian.guardiancode}}">
+                </p>
+                <p>
+                    <label for="username">Nombre usuario:</label>
+                    <input type="text" id="username" disabled value="{{user.username}}">
+                </p>
+                {% comment %} {{formimage.as_p}} {% endcomment %}
+            {% comment %} </form> {% endcomment %}
+            </div>
+            <button id="passwordchanger" class="clicker"><span>Cambiar Contraseña</span></button>
+            </section> 
+            
+
+            <div id="passwordModal" class="modal" display="none">
+            <div class="modal-content">
+                    <button id="close-modal" class="close"><i id="icon-edit" class="fas fa-times"></i></button>
+                    <form method="post" action="{% url 'changepasswordguardian'%}">
+                    {% csrf_token %}
+                    {{form.message.errors}}
+                    {{ form.as_p }}
+                    <button type="submit" class="clicker"><span>Cambiar contraseña</span></button>
+                    
+                </form>
+                </div>
+
+            </div> 
+            </div>
+    </main>
+
+    {% include 'portal/html/bases/footer.html' %}
+    </body>

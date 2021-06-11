@@ -1,0 +1,26 @@
+version: "3.7"
+services:
+    db:
+      image: mariadb
+      volumes:
+        - .dbdata/:/var/lib/mysql
+      expose:
+        - 3312
+      ports:
+        - "3308:3306"
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: ibis
+        MYSQL_PASSWORD: docker
+    web:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      ports: 
+        - 8000:8000
+      volumes: 
+        - .:/ibis
+      depends_on: 
+        - db
+volumes:
+    .dbdata:

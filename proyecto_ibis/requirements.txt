@@ -1,0 +1,6 @@
+Django>=3.0,<4.0
+pymysql
+mysqlclient
+django-mysql
+Pillow
+django-cors-headers

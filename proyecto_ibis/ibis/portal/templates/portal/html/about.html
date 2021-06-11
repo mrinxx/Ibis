@@ -1,0 +1,88 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+    <script src="{% static 'portal/javascript/aboutmediaactions.js'%}"></script>
+
+    <link rel="stylesheet" href="{% static 'portal/css/about.css' %}">
+    <link rel="stylesheet" href="{% static 'portal/css/footer.css' %}">
+
+    <title>Escuela infantil Ibis - Sobre la escuela </title> 
+</head>
+<body>
+    {% include 'portal/html/bases/header.html' %}
+    <main>
+        <h1>Quiénes somos</h1>
+        <section id="about-school">
+            <h2>Nuestra escuela</h2>
+            <div class="ppalimg">
+                <img src="{% static 'portal/recursos/images/allteachers.jpg' %}" alt="imagen principal de la seccion quienes somos">
+            </div>
+            <p class="firsparagraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            
+            <div class="video">
+                <video id="video1"  src="{% static 'portal/recursos/videos/video1.mp4' %}" autoplay="autoplay" loop mute style="width:100%"></video>
+            </div>
+             
+            
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        
+        
+        
+        </section>
+        <section id="about-teaching">
+            <h2>Práctica docente</h2>
+            <div class="ppalimg">
+                 <video id="video2"  src="{% static 'portal/recursos/videos/video2.mp4' %}" autoplay="autoplay" loop mute style="width:100%"></video>
+            </div>
+            <p class="firsparagraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <div class="video">
+                <img src="{% static 'portal/recursos/images/blackboard.jpg' %}" alt="imagen de la sección practica docente">
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        </section>
+        <section id="about-team">
+            <h2>Equipo docente</h2>
+            <div id="about-team__people">
+            {% for teacher in teachers %}
+                <div class="about-team__people--container">
+                    <div class="about-team__people--containerpicture">
+                        <picture>
+                            {% for user in users %}
+                            
+                            {% ifequal user.id  teacher.user_id%}
+                            <img class="teacher-image"src="/media/{{teacher.image}}" alt="imagen de {{user.first_name}}{{user.last_name}}">
+
+                        </picture>
+                    </div>
+                    <p class="team-name">{{user.first_name}} {{user.last_name}}</p>
+                    {% for cicle in cicles %}
+                        {% ifequal cicle.teacher_id teacher.id%}
+                            <p class="team-title">Profesorado de ciclo {{cicle.classroom}}</p>
+                        {% endifequal %}
+                    {% endfor %}
+                    {% endifequal %}
+                    {% endfor %}
+
+                </div>
+            {% endfor %}
+                
+            </div>    
+        </section>
+        
+    </main>
+    {% include 'portal/html/bases/footer.html' %}
+</body>
+</html>

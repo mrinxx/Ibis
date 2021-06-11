@@ -1,0 +1,78 @@
+{%load static%}
+
+<script src="{% static 'portal/javascript/menufunctions.js' %}"></script>
+<script src="{% static 'portal/javascript/search.js' %}"></script>
+<link rel="stylesheet" href="{% static 'portal/css/header.css' %}">
+
+<header>
+
+    <div id="zona-logo-max">
+        <a href="{% url 'home' %}">
+            <img id="logo" alt="logo-ibis" src="{% static 'portal/recursos/svg/logo-full.svg' %}">
+        </a>
+    </div>
+    <nav id="max-menu-navegacion" >
+                <ul id="max-navegation-pages">
+                    <li><a href="{% url 'about' %}">Quiénes somos</a></li>
+                    <li><a href="{% url 'services' %}">Servicios</a></li>
+                    <li><a href="{% url 'contact' %}">Contacto</a></li>
+                    <li><a href="{% url 'userpanel' %}">Zona de usuarios</a></li>
+                    <li><a href="{% url 'teacherpanel' %}">Zona de empleados</a></li> <!-- CAMBIAR-->
+                    <li><i id="search-icon" class="fas fa-search" onclick="search()"></i></li>
+                    <li><i id="dark-icon" class="far fa-moon" onclick="darkMode()"></i></li>
+                </ul>    
+    </nav>
+    <div id="zona-logo-min">
+        <a href="{% url 'home' %}">
+            <img id="logo-min"alt="logo-ibis" src="{% static 'portal/recursos/svg/logo-small.svg' %}">
+        </a>
+    </div>
+   <nav id="min-menu-navegacion" >
+        <div id="min-menu-navegacion_icon__container">
+            <button id="min-menu-navegacion_icon__link"><i id="min-menu-icon" class="fas fa-bars"></i></button>
+        </div>
+        <div id="min_menu" style="display:none">
+            <ul id="navegation-pages_min">
+                <li><a href="{% url 'about' %}">Quiénes somos</a></li>
+                <li><a href="{% url 'services' %}">Servicios</a></li>
+                <li><a href="{% url 'contact' %}">Contacto</a></li>
+                <li><a href="{% url 'userpanel' %}">Zona de usuarios</a></li>
+                <li><a href="{% url 'teacherpanel' %}">Zona de empleados</a></li> <!-- CAMBIAR-->
+                <li><i id="min-search-icon" class="fas fa-search" onclick="search()"></i></li>
+                <li><i id="min-dark-icon" class="far fa-moon" onclick="darkMode()"></i></li>
+            </ul>    
+        </div>
+    </nav>   
+</header>
+<div id="searchbar" style="display:none">
+    <div id="searchbarcontainer">
+     <label for="search" aria-label="search"></label>
+     <span id="icon"><i class="fas fa-search"></i></span>
+     <input type="text" id="search">
+     <button id="close"><span><i class="fas fa-times"></i></span></button>
+    </div>
+    <div id="content">
+    <div>
+        <h3>Noticias</h3>
+        <div id="content-news">
+            <div id="alertNews" class="alert" style="display:none"><p>No se han encontrado noticias coincidentes con el criterio</p></div>
+        </div>      
+    </div>
+    <div>
+        <h3>Eventos</h3>
+        <div id="content-events">
+            <div id="alertEvents" class="alert" style="display:none"><p>No se han encontrado noticias eventos con el criterio</p></div>
+        </div>      
+    </div>
+    <div>
+        <h3>Recursos</h3>
+        <div id="content-resources">
+            <div id="alerttest" class="alert" style="display:none"><p>No se han encontrado recursos coincidentes con el criterio</p></div>
+        </div>      
+    </div>
+
+
+
+            
+    </div>
+</div>

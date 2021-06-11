@@ -1,0 +1,88 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+    <script src="{% static 'users/javascript/passwordactions.js'%}" crossorigin="anonymous"></script>
+    <script src="{% static 'users/javascript/registrationactions.js'%}" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'portal/css/footer.css' %}">
+
+    <title>Login-Escuela infantil Ibis</title>
+</head>
+<body>
+    {% include 'portal/html/bases/header.html' %}
+    <main>
+        <h1>Inicio de sesión</h1>
+        {% if form.errors %}
+             <div class="alert"><p>!Sus credenciales no son válidas, inténtelo de nuevo!</p></div>
+            {% endif %}
+
+            {% if next %}
+                {% if user.is_authenticated %}
+                <div class="alert"><p>!Sus credenciales no son válidas para acceder a esta página!</p></div>
+                {% else %}
+                <div class="alert"><p>Para acceder a esta página es necesario iniciar sesión</p></div>
+                {% endif %}
+            {% endif %} 
+        
+        <div id="login-zone">
+            <div id="login-zone__form">
+            {%if 'ok' in request.GET%}
+                <div class="alert"><p>Se ha registrado correctamente, ya puede iniciar sesión</p></div>
+            {%endif%}
+
+            
+                <form id="loginform" action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <p>
+                    {{form.username.label_tag}}
+                    {{form.username}}
+                </p>
+                <p>
+                    {{form.password.label_tag}}
+                    {{form.password}}<button type="button" id="see_pass" onclick=revealpass(this.id)><i class="far fa-eye"></i></button>
+                    <p id="contactproblems">Si tiene algún problema con el inicio de sesión, contacte con nosotros <a href="{%url 'contact'%}">AQUÍ</a></p>
+                </p>
+                    <p>
+                        <button type="submit" value="login" class="clicker"><span>Acceder</span></button>
+                        <input type="hidden" name="next" value="{{ next }}">
+                    </p>
+                </form>
+                <div class="alert" id="alertregister">
+                    <p>Si todavía no te has dado de alta en la plataforma de la escuela, haz <button id="toregister">click aquí</button></p>
+                </div>
+        
+                <div id="registerModal" class="modal" display="none">
+    
+                <div class="modal-content">
+                    <button id="close-modal" class="close"><i class="fas fa-times"></i></button>
+                    <form method="post" action="{%url 'register'%}">
+                        
+                    {% csrf_token %}
+                         <p id="whattodo">En la siguiente casilla debe introducir el código de 10 dígitos que se le ha hecho llegar desde el centro</p>
+                         <label for="code">Código</label>
+                         <input type="text" max_length=10 id="code" name="code">
+                         <button type="submit" value="register" class="clicker"><span>Darse de alta</span></button>
+                    </form>
+                </div>
+
+                </div>
+                
+            </div>
+            <div id="login-zone__media">
+                <video id="video" src="{% static 'users/recursos/videos/video-login.mp4' %}" autoplay="autoplay" loop mute >
+            </div>
+
+        </div>
+       
+    </main>
+
+    {% include 'portal/html/bases/footer.html' %}
+    </body>
+

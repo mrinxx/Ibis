@@ -1,0 +1,143 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+    <script src="{% static 'users/javascript/passwordactions.js'%}" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'users/css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'portal/css/footer.css' %}">
+
+    <title>Registro-Escuela infantil Ibis</title>
+</head>
+<body>
+    {% include 'portal/html/bases/header.html' %}
+    <main>
+        <h1 id="pagetitle">Formulario de registro</h1>
+
+        <div id="alerta" style="display:none"><p id="message"></p></div> <!-- Muestra información-->
+        <div id="formcontainer">
+        {%if is_ok%}
+                    {%ifequal is_ok 'ok'%}
+                    
+                        <div class="message"><p>¡El usuario ha sido dado de alta correctamente. Ahora puede iniciar sesión!</p><button class="close"><i class="fas fa-times"></i></button></div>
+                    {%endifequal%}
+                    {%ifequal is_ok 'not ok'%}
+                        <div class="message"><p>Lo sentimos, pero ha ocurrido un error, intentelo de nuevo</p><button class="close"><i class="fas fa-times"></i></button></div>
+                    {%endifequal%}
+                {% endif %}
+            
+            <form method="POST" onsubmit="/users/register">
+            {% csrf_token %}
+                <!-- En el formulario se encuentran campos deshabilitados ya que son los que un usuario no puede cambiar, como su dni o su
+                nombre. Sin embargo, otros si que son modificables debido a que un usuario puede cambiar de email, telefono o dirección -->
+               <div id="codeandaccount">
+                <fieldset id="code">
+                
+                    <legend>Código de centro</legend>
+                    <p id="whattodo">En la siguiente casilla debe introducir el código de 10 dígitos que se le ha hecho llegar desde el centro</p>
+                    <p>
+                        {{form.code.label_tag}}
+                        {{form.code}}
+                    </p>
+                    <p id="aclaration">Anote la casilla de nombre de usuario, ya que es con el cual podrá acceder a su zona de usuario</p>
+                    <p>
+                        <label for="username">Nombre de usuario:</label><br>
+                        <input type="text" id="username" disabled>
+                    </p>
+                    
+                
+                </div>
+                <fieldset id="personal">
+                    <legend>Datos personales</legend>
+                
+                    <p>
+                        {{form.dni.label_tag}}<br>
+                        {{form.dni}}
+                    </p>
+                    <p>
+                        <label for="name">Nombre:</label><br>
+                        <input type="text" id="name" disabled>
+                    </p>
+                    <p>
+                        <label for="last_name">Apellidos:</label><br>
+                        <input type="text" id="last_name" disabled>
+                    </p>
+                    <p>
+                        {{form.birthdate.label_tag}}
+                        {{form.birthdate}}
+                    </p>
+                    <p class="smaller">
+                        {{form.viatype.label_tag}}<br>
+                        {{form.viatype}}
+                        <!-- <span><i class="fas fa-caret-down"></i></span> -->
+                    </p>
+                    <p class="smaller">
+                        {{form.vianame.label_tag}}
+                        {{form.vianame}}
+                    </p>
+                    <p class="smaller">
+                        {{form.vianumber.label_tag}}
+                        {{form.vianumber}}
+                    </p>
+                    <p class="smaller">
+                        {{form.floor.label_tag}}<br>
+                        {{form.floor}}
+                    </p>
+                    <p class="smaller">
+                        {{form.letter.label_tag}}<br>
+                        {{form.letter}}
+                    </p>
+                    <p class="smaller">
+                        {{form.cp.label_tag}}<br>
+                        {{form.cp}}
+                    </p>
+                    <p>
+                        {{form.city.label_tag}}
+                        {{form.city}}
+                    </p>
+                    
+                </fieldset>
+                <fieldset id="contact">
+                    <legend>Datos de contacto</legend>
+                
+                    <p>
+                        <label for="email">Correo electrónico:</label><br>
+                        <input type="text" id="email" disabled>
+                    </p>
+                    <p>
+                        {{form.phonenumber.label_tag}}
+                        {{form.phonenumber}}
+                        {{form.phonenumber.errors}}
+                    </p>
+                    
+                </fieldset>
+                <fieldset id="image">
+                    <legend>Imagen de usuario: </legend>
+                    <div>
+                    <p>¿Quiere añadir una imagen de perfil? Siéntase libre de hacerlo</p>
+                        {{form.userimage.label_tag}}
+                        {{form.userimage}}
+                    <div>
+                </fieldset>
+                <fieldset id="termsandconditions">
+                    <legend>Consentimientos</legend>
+                    {{form.privacitypolicy}} {{form.privacitypolicy.label_tag}}<br>
+                    {{form.terms}} {{form.terms.label_tag}}
+                    <p>Deseo recibir información acerca de las novedades y eventos de Ibis</p>
+                    {{form.comunications}}
+                </fieldset>
+                
+                <p>
+                    <button type="submit" class="clicker"><span>Darse de alta</span></button>
+                </p>
+                
+            </form>
+        </div>
+    </main>
+    {% include 'portal/html/bases/footer.html' %}
+</body>
+<script src="{% static 'users/javascript/registrationactions.js'%}" crossorigin="anonymous"></script>

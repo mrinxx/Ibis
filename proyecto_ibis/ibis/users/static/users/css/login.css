@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Evito desbordamientos */
+*{
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color:black;
+}
+body{
+    background-color: #F9F9F8;
+    font-family: 'Montserrat',serif,Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+}
+
+
+/*Cuerpo de la página*/
+
+main{
+    margin-bottom: 5%;
+}
+h1{
+    font-family: 'Abril Fatface',serif,Arial, Helvetica, sans-serif;
+    font-size:9em;
+    margin-block-start: 0.5em;
+    text-align: center;
+}
+
+#login-zone{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 2%;
+    margin-left:10%;
+}
+
+#login-zone__media{
+    width:50%;
+    height: 800px;
+    min-height:50vh;
+    z-index:0;
+
+}
+#video{
+    height: 850px;
+}
+#login-zone__form{
+    border:2px solid black;
+    background-color: white;
+    border-radius: 80px;
+    font-size: 2em;
+    width:50%;
+    margin-top:-2%;
+    margin-right: -2%;
+    min-height:60vw;
+    z-index:1;
+
+}
+
+#loginform{
+    margin-top:15%;
+    margin-left: 10%;
+}
+
+#loginform p {
+    margin-top: 5%;
+    font-weight: 900;
+}
+
+#loginform p:nth-child(3){
+    margin-top:15%;
+}
+input{
+    background-color: rgb(255,0,0,0);
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 3px solid black;
+    width: 90%;
+    outline: none;
+    font-size:100%;
+}
+#see_pass{
+    /*Limpieza de estilos por defecto de un botón*/
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+
+    margin-left:-7%;
+}
+
+
+.clicker {
+    position: relative;
+    transition: all 0.2s ease;
+    border: none;
+    background-color: #F9F9F8;
+    margin-left:30%;
+    margin-top:2%;
+  }
+  /* Elemento de color */
+.clicker:before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: 0;
+    display: block;
+    border-radius: 10px;
+    background: #FAA81D;
+    width: 56px;
+    height: 56px;
+    transition: all 0.3s ease;
+  }
+
+.clicker span {
+    position: relative;
+    font-size: 16px;
+    font-weight: 900;
+  }
+  
+.clicker:hover:before {
+    width: 100%;
+    background: #FAA81D;
+}
+
+.alert{   
+    background-color: #FAA81D;
+    border: 3px solid black;
+    border-radius: 10px;
+    display:block;
+    font-weight: 800;
+    font-size:1.4em;
+    height:70px;margin: auto;
+    margin-bottom:5%;
+    margin-top:10%;
+    text-align: center;
+    width: 85.5%;
+}
+#contactproblems{
+    font-weight: 500;
+    font-style: italic;
+    font-size: 0.4em;
+}
+#login-zone__form .alert{
+    font-size: 0.5em;
+}
+
+
+#alert p{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(223, 163, 32, 0.466)
+  }
+  
+ 
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 3px solid black;
+    border-radius: 10px;
+    width: 80%;
+  }
+  
+  .modal-content form{
+    padding: 40px 60px 40px 60px;
+    margin-bottom: 5%;
+  }
+  .modal-content form #whattodo{
+    font-weight: 700;
+    font-size: 0.9em;
+    margin-top:40px
+  }
+
+  .modal-content form .clicker{
+      margin-top:5%;
+  }
+
+
+  .close {
+    color: black;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+/*MEDIA QUERIES*/
+
+@media screen and (max-width:1024px){
+    h1{
+        font-size: 5.5em;
+    }
+    #login-zone{
+        flex-direction: column-reverse;
+        justify-content: center;
+        margin:0;
+        margin-bottom: 2%;
+    }
+    #login-zone__form{
+        width: 90%;
+        height: 90vh;
+        margin-top: -70%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    #login-zone__media{
+        width:100%;
+    }
+    #video{
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .alert{   
+        font-size:1em;
+        margin-top:0;
+    }
+    #login-zone__form .alert{
+        font-size: 0.5em;
+    }
+
+    .clicker{
+        background-color: #FAA81D;
+        border: 3px solid black;
+        border-radius: 10px;
+        display: inline-block;
+        font-weight: 800;
+        margin: auto auto;
+        margin-top: 2%;
+        padding: 1%;
+    }
+     /* Elemento de color */
+     .clicker:before {
+        display: none;
+    
+      }
+    
+    .clicker span {
+        position: relative;
+        font-size: 16px;
+        font-weight: 900;
+      }
+      
+    .clicker:hover:before {
+        width: 0%;
+        background: #F9F9F8;
+      }
+}
+
+@media screen and (max-width:480px){
+    h1{
+        font-size: 6em;
+        margin-bottom: 2%;
+    }
+    #login-zone{
+        display:flex;
+        flex-direction: column-reverse; 
+    }
+    #login-zone__media{
+
+        width:100%;
+        min-height:70vw;
+    }
+    #video{
+        width:100%;
+        object-fit: inherit;
+    }
+    
+    #login-zone__form{
+        height: 80vh;
+        margin-top: -117%;
+    }
+    
+    #login-zone__form form{
+        margin-left: 10%;
+    }
+    .alert{   
+
+        height:80px;
+        margin-bottom: 10%;
+    }
+    #alertregister{
+        font-size: 0.7em;
+    }
+  
+  .modal-content form{
+    padding: initial;
+  }
+
+  .modal-content form label{
+      margin-left:20%
+  }
+  .modal-content form #whattodo{
+    
+    font-size: 0.7em;
+   
+  }
+
+  .modal-content form .clicker{
+      margin-top:5%;
+      margin-left:20%
+  }
+
+  /* The Close Button */
+  .close {
+    color: black;
+  }
+  
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
